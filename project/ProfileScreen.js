@@ -81,7 +81,8 @@ export default ProfileScreen
 const styles = StyleSheet.create({
     container: {
         marginTop: 50,
-        padding: 20
+        padding: 20,
+        paddingBottom: 100
     },
     profile__container: {
         flexDirection: "row",

@@ -1,6 +1,7 @@
-import { StyleSheet, View, Text, ScrollView } from 'react-native'
+import { StyleSheet, View, Text, ScrollView, TextInput } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import React, { useEffect, useState } from 'react'
+import { AntDesign } from '@expo/vector-icons';
 import SongCard from './SongCard'
 import AlbumCard from './AlbumCard'
 import { tracks } from './data'
@@ -11,6 +12,8 @@ const DiscoverScreen = () => {
     const [genres, setGenres] = useState([]);
     const [albums, setAlbums] = useState([]);
     const [music, setMusic] = useState([]);
+    const [searchClick, setSearchClick] = useState(false);
+    const [searchPhrase, setSearchPhrase] = useState('');
 
     useEffect(() => {
         const getCharts = () => {
@@ -40,6 +43,27 @@ const DiscoverScreen = () => {
     return (
         <LinearGradient colors={["#040306", "#131624"]} style={{ flex: 1 }}>
             <ScrollView style={styles.container}>
+
+            <View style={styles.searchbar__container}>
+                <View style={
+                        searchClick ? (
+                            styles.searchbar__clicked
+                        ) : (
+                            styles.searchbar__unclicked
+                        )
+                }>
+                    <TextInput
+                        style={styles.searchbar__input}
+                        placeholder='Search'
+                        value={searchPhrase}
+                        onChangeText={setSearchPhrase}
+                        onFocus={() => {
+                            setSearchClick(true);
+                        }}
+                    />
+                    <AntDesign name="search1" size={20} color="#8E8E8E" />
+                </View>
+            </View>
 
                 <View style={styles.section}>
                     <Text style={styles.heading}>
@@ -110,7 +134,29 @@ export default DiscoverScreen
 
 const styles = StyleSheet.create({
     container: {
-        padding: 20
+        padding: 20,
+        paddingBottom: 100
+    },
+    searchbar__container: {
+        backgroundColor: '#141414',
+        marginTop: 25,
+        paddingHorizontal: 30,
+        paddingVertical: 15,
+        borderRadius: 30,
+    },
+    searchbar__unclicked: {
+        flexDirection: "row",
+        justifyContent: 'space-between'  
+    },
+    searchbar__clicked: {
+        flexDirection: "row",
+        justifyContent: 'space-between'
+    },
+    searchbar__input: {
+        color: "#8E8E8E",
+        fontSize: 14,
+        width: "80%",
+        outlineStyle: "none"
     },
     section: {
         marginTop: 50,

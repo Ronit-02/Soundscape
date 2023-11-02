@@ -1,7 +1,6 @@
 import { StyleSheet, Text, ScrollView, Pressable, Image, View, TextInput, FlatList } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
-import { AntDesign } from '@expo/vector-icons';
 import { tracks } from './data';
 import { useState, useEffect } from 'react';
 import SongCard from './SongCard';
@@ -15,8 +14,6 @@ const HomeScreen = () => {
         image: './src/assets/profile-photo.jpg',
         plan: 'gold member'
     })
-    const [searchClick, setSearchClick] = useState(false);
-    const [searchPhrase, setSearchPhrase] = useState('');
     const [recents, setRecents] = useState([]);
     const [recommended, setRecommended] = useState([]);
     
@@ -74,27 +71,6 @@ const HomeScreen = () => {
                 </View>
             </View>
 
-            <View style={styles.searchbar__container}>
-                <View style={
-                        searchClick ? (
-                            styles.searchbar__clicked
-                        ) : (
-                            styles.searchbar__unclicked
-                        )
-                }>
-                    <TextInput
-                        style={styles.searchbar__input}
-                        placeholder='Search'
-                        value={searchPhrase}
-                        onChangeText={setSearchPhrase}
-                        onFocus={() => {
-                            setSearchClick(true);
-                        }}
-                    />
-                    <AntDesign name="search1" size={20} color="#8E8E8E" />
-                </View>
-            </View>
-
             <View style={styles.recents__container}>
                 <Text style={styles.recents__heading}>
                     Recently Played
@@ -136,7 +112,8 @@ export default HomeScreen;
 const styles = StyleSheet.create({
     container: {
         marginTop: 50,
-        padding: 20
+        padding: 20,
+        paddingBottom: 100
     },
     profile__container: {
         flexDirection: "row",
@@ -168,27 +145,6 @@ const styles = StyleSheet.create({
         marginVertical: 20,
         borderRadius: 10,
         color: "black"
-    },
-    searchbar__container: {
-        backgroundColor: '#141414',
-        marginTop: 25,
-        paddingHorizontal: 30,
-        paddingVertical: 15,
-        borderRadius: 30,
-    },
-    searchbar__unclicked: {
-        flexDirection: "row",
-        justifyContent: 'space-between'  
-    },
-    searchbar__clicked: {
-        flexDirection: "row",
-        justifyContent: 'space-between'
-    },
-    searchbar__input: {
-        color: "#8E8E8E",
-        fontSize: 14,
-        width: "80%",
-        outlineStyle: "none"
     },
     recents__container: {
         marginTop: 50,
