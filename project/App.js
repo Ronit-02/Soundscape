@@ -1,11 +1,14 @@
 import * as React from 'react';
-import Navigation from './StackNavigator';
-import { PlayerContext } from './PlayerContext';
+import Navigation from './src/navigation/StackNavigator';
+import { PlayerProvider } from './contexts/Player';
 
 export default function App() {
+
+    const [currentTrack, setCurrentTrack] = React.useState(null);
+
     return (
-        <PlayerContext>
+        <PlayerProvider value={{currentTrack, setCurrentTrack}}>
             <Navigation />
-        </PlayerContext>
+        </PlayerProvider>
     );
 }

@@ -1,10 +1,10 @@
 import { StyleSheet, Text, ScrollView, Pressable, Image, View, TextInput, FlatList } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
-import { tracks } from './data';
+import { tracks } from '../api/data';
 import { useState, useEffect } from 'react';
-import SongCard from './SongCard';
-import SongListCard from './SongListCard';
+import SongCard from '../components/SongCard';
+import SongListCard from '../components/SongListCard';
 
 const HomeScreen = () => {
 
@@ -62,7 +62,7 @@ const HomeScreen = () => {
 
             <View style={styles.profile__container}>
                 <Pressable onPress={() => navigation.navigate('Profile', {itemId: 1})} >
-                    <Image style={styles.user__photo} source={require('./src/assets/profile-photo.jpg')} />
+                    <Image style={styles.user__photo} source={require('../assets/profile-photo.jpg')} />
                 </Pressable>
 
                 <View style={styles.user__details}>

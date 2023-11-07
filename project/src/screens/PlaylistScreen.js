@@ -1,16 +1,17 @@
 import { ScrollView, StyleSheet, Text, View, Image, FlatList, Pressable, Modal } from 'react-native'
-import React, { useContext, useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, useContext } from 'react'
 import { LinearGradient } from 'expo-linear-gradient'
-import { tracks } from './data'
-import SongListCard from './SongListCard'
+import { tracks } from '../api/data'
+import SongListCard from '../components/SongListCard'
 import { Ionicons, AntDesign, MaterialIcons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import { Audio } from 'expo-av'
-import { Player } from './PlayerContext'
+import { usePlayer } from '../contexts/Player'
+
 const PlaylistScreen = ({ route }) => {
 
     const navigation = useNavigation();
-    const { currentTrack, setCurrentTrack } = useContext(Player);
+    const {currentTrack, setCurrentTrack} = usePlayer();
     const [currentSound, setCurrentSound] = useState(null);
     const [progress, setProgress] = useState(null);
     const [currentTime, setCurrentTime] = useState(0);
@@ -62,6 +63,7 @@ const PlaylistScreen = ({ route }) => {
             onPlaybackStatusUpdate(status);
             setCurrentSound(sound);
             setIsPlaying(true);
+            console.log(currentTrack)
             await sound.playAsync();
         } catch (err) {
             console.log(err);
@@ -96,6 +98,7 @@ const PlaylistScreen = ({ route }) => {
     }
 
     const handleNext = async () => {
+
         if(currentSound){
             await currentSound.stopAsync();
             setCurrentSound(null);
@@ -138,8 +141,8 @@ const PlaylistScreen = ({ route }) => {
     }
 
     const handleShuffle = async () => {
-
-    }
+        
+    }   
 
     const formatTime = (time) => {
         const minutes = Math.floor(time / 60000);

@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View, Pressable, Image } from 'react-native'
-import React, { useContext } from 'react'
-import { Player } from './PlayerContext'
+import React, {useContext} from 'react'
+import { usePlayer } from '../contexts/Player'
 import { Foundation } from '@expo/vector-icons';
 
 const SongListCard = ({ item, play, isPlaying }) => {
 
-    const { currentTrack, setCurrentTrack } = useContext(Player);
+    const {currentTrack, setCurrentTrack} = usePlayer();
 
     const handlePress = () => {
         setCurrentTrack(item);

@@ -4,11 +4,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { Entypo, AntDesign, Ionicons } from '@expo/vector-icons';
 
-import LoginScreen from './LoginScreen';
-import HomeScreen from './HomeScreen';
-import ProfileScreen from './ProfileScreen';
-import DiscoverScreen from './DiscoverScreen';
-import PlaylistScreen from './PlaylistScreen';
+import LoginScreen from '../screens/LoginScreen';
+import HomeScreen from '../screens/HomeScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+import DiscoverScreen from '../screens/DiscoverScreen';
+import PlaylistScreen from '../screens/PlaylistScreen';
 
 const Tab = createBottomTabNavigator();
 

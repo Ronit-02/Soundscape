@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, ScrollView, Image } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
-import SongCard from './SongCard';
-import { tracks } from './data';
+import SongCard from '../components/SongCard';
+import { tracks } from '../api/data';
+// import {img} from '../assets/profile-photo.jpg'
 
 
 const ProfileScreen = () => {
 
     const [userProfile, setUserProfile] = useState({
         name: 'Ronit Khatri',
-        image: './src/assets/profile-photo.jpg',
+        image: '../assets/profile-photo.jpg',
         plan: 'gold member'
     })
     const [albums, setAlbums] = useState([]);
@@ -34,7 +35,7 @@ const ProfileScreen = () => {
             <ScrollView style={styles.container}>
 
                 <View style={styles.profile__container}>
-                    <Image style={styles.user__photo} source={require('./src/assets/profile-photo.jpg')} />
+                    <Image style={styles.user__photo} source={require('../assets/profile-photo.jpg')} />
                     <View style={styles.user__details}>
                         <Text style={styles.user__name}>{userProfile.name}</Text>
                         <Text style={styles.user__plan}>{userProfile.plan}</Text>
