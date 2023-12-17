@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { BottomTabBar, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { Entypo, AntDesign, Ionicons } from '@expo/vector-icons';
@@ -9,6 +9,8 @@ import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import DiscoverScreen from '../screens/DiscoverScreen';
 import PlaylistScreen from '../screens/PlaylistScreen';
+import { View, Text } from 'react-native';
+import MusicPlayer from '../components/MusicPlayer';
 
 const Tab = createBottomTabNavigator();
 
@@ -18,16 +20,22 @@ function BottomTabs() {
             screenOptions={{
                 tabBarStyle: {
                     backgroundColor: "#11111C",
-                        position: "absolute",
                     height: 100,
                     justifyContent: "center",
                     padding: 20,
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    borderTopWidth: 0
+                    // position: "absolute",
+                    // bottom: 0,
+                    // left: 0,
+                    // right: 0,
+                    // borderTopWidth: 0
                 }
             }}
+            tabBar={(props) => (
+                <View>
+                    <MusicPlayer />
+                    <BottomTabBar {...props} />
+                </View>
+            )}
         >
             <Tab.Screen
                 name='Home'

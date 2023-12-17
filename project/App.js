@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Navigation from './src/navigation/StackNavigator';
-import { PlayerProvider } from './contexts/Player';
+import { PlayerProvider } from './src/contexts/Player';
 
 export default function App() {
 

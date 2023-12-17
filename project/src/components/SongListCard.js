@@ -3,13 +3,12 @@ import React, {useContext} from 'react'
 import { usePlayer } from '../contexts/Player'
 import { Foundation } from '@expo/vector-icons';
 
-const SongListCard = ({ item, play, isPlaying }) => {
+const SongListCard = ({ item, isPlaying }) => {
 
     const {currentTrack, setCurrentTrack} = usePlayer();
 
     const handlePress = () => {
         setCurrentTrack(item);
-        play(item);
     }
 
     return (

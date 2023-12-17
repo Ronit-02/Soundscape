@@ -1,10 +1,18 @@
-import { StyleSheet, Text, Pressable, Image } from 'react-native'
 import React from 'react'
+import { StyleSheet, Text, Pressable, Image } from 'react-native'
+import { usePlayer } from '../contexts/Player'
 
 const SongCard = ({ item }) => {
+
+    const { currentTrack, setCurrentTrack } = usePlayer();
+
+    const handlePress = () => {
+        setCurrentTrack(item);
+    }   
+
     return (
-        <Pressable style={styles.container}>
-            <Image style={styles.image} source={{uri: item.album.images[0].url}} />
+        <Pressable onPress={handlePress} style={styles.container}>
+            <Image style={styles.image} source={{ uri: item.album.images[0].url }} />
             <Text style={styles.text}>{item?.name}</Text>
         </Pressable>
     )
